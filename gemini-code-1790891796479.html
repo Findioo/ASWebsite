@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Discover Lebanon</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --red:#9e1b32; --green:#176b48; --ink:#252525; --sand:#f5efe5; --cream:#fffdfa; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family:"DM Sans",sans-serif; background:var(--cream); }
+    .display-font { font-family:"Fraunces",serif; }
+    .site-shell { width:100%; overflow:hidden; }
+    .nav-link { position:relative; font-size:.84rem; font-weight:700; letter-spacing:.02em; color:#4b4541; text-decoration:none; }
+    .nav-link:hover { color:var(--red); }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; width:100%; height:2px; background:var(--red); transform:scaleX(0); transform-origin:left; transition:transform .2s ease; }
+    .nav-link:hover::after { transform:scaleX(1); }
+    .topic-card { text-decoration:none; display:flex; align-items:center; gap:1rem; padding:1.25rem; border-radius:1rem; border:1px solid #e7e5e4; background:#ffffff; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; cursor:pointer; }
+    .topic-card:hover { transform:translateY(-5px); box-shadow:0 16px 28px rgba(61,43,30,.12); border-color:#9e1b32; }
+    .topic-card:hover .card-num { background:#176b48; }
+    .card-num { flex-shrink:0; width:2.5rem; height:2.5rem; display:flex; align-items:center; justify-content:center; border-radius:9999px; background:#9e1b32; color:#ffffff; font-size:.875rem; font-weight:700; transition:background .25s ease; }
+    .topic-section { scroll-margin-top:90px; }
+    .topic-inner { direction:ltr; }
+    .topic-copy, .topic-player-wrap { direction:ltr; }
+    .topic-copy h2 { line-height:1.15; }
+    .watch-button { transition:transform .2s ease,box-shadow .2s ease; text-decoration:none; }
+    .watch-button:hover { transform:translateY(-2px); box-shadow:0 10px 20px rgba(158,27,50,.22); }
+    .watch-button:focus-visible { outline:3px solid #d6a84d; outline-offset:4px; }
+    .player-frame { overflow:hidden; border:1px solid rgba(158,27,50,.16); border-radius:1.6rem; background:#252525; box-shadow:0 16px 28px rgba(61,43,30,.18); }
+    .player-frame iframe { display:block; width:100%; aspect-ratio:16 / 9; border:0; background:#252525; }
+    .reveal { animation:rise .65s both; }
+    @keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    :focus-visible { outline:3px solid #d6a84d; outline-offset:4px; }
+    @media (max-width:767px) {
+      .desktop-nav { display:none; }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+</head>
+<body data-template-id="__page-root">
+  <div class="site-shell">
+    <header class="sticky top-0 z-50 border-b border-stone-200 bg-[#fffdfa]/95 backdrop-blur">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8" aria-label="Primary navigation">
+        <a href="#home" class="display-font text-xl font-bold tracking-tight text-[#9e1b32]">Discover Lebanon</a>
+        <div class="desktop-nav flex items-center gap-5 lg:gap-7">
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#country">Country</a>
+          <a class="nav-link" href="#people">People</a>
+          <a class="nav-link" href="#culture">Culture</a>
+          <a class="nav-link" href="#lifestyle">Lifestyle</a>
+          <a class="nav-link" href="#nature">Nature</a>
+          <a class="nav-link" href="#topics">Topic Directory</a>
+        </div>
+        <button id="menu-button" type="button" class="rounded-full border border-stone-300 p-2 text-stone-700 md:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden border-t border-stone-200 bg-[#fffdfa] px-6 py-5 md:hidden">
+        <div class="grid grid-cols-2 gap-4">
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#country">Country</a>
+          <a class="nav-link" href="#people">People</a>
+          <a class="nav-link" href="#culture">Culture</a>
+          <a class="nav-link" href="#lifestyle">Lifestyle</a>
+          <a class="nav-link" href="#nature">Nature</a>
+          <a class="nav-link" href="#topics">Topic Directory</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section id="home" class="relative isolate overflow-hidden bg-[#f5efe5]">
+        <div class="absolute -right-24 top-16 h-72 w-72 rounded-full bg-[#176b48]/10 blur-3xl"></div>
+        <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 md:px-8 md:py-20 lg:grid-cols-[1fr_1.04fr] lg:py-24">
+          <div class="reveal relative z-10">
+            <p class="mb-5 inline-block rounded-full bg-[#176b48] px-4 py-2 text-xs font-bold uppercase tracking-[.18em] text-white">A student country introduction</p>
+            <h1 class="display-font max-w-xl text-3xl font-bold leading-[1.05] text-[#252525] md:text-5xl">Lebanon: Where History Meets the Mediterranean</h1>
+            <p class="mt-6 max-w-xl text-lg leading-8 text-[#514a45]">Explore Lebanon through its landscapes, people, culture, and everyday life in this easy-to-scan country project.</p>
+            <a href="#topics" class="watch-button mt-8 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-6 py-3.5 font-bold text-white">Explore the topics</a>
+          </div>
+          <div class="reveal relative" style="animation-delay:.15s">
+            <div class="absolute -inset-3 rounded-[2rem] border border-[#9e1b32]/20"></div>
+            <img loading="lazy" class="relative h-[320px] w-full rounded-[1.7rem] object-cover shadow-2xl md:h-[470px]" src="https://images.pexels.com/photos/15433562/pexels-photo-15433562.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1280" alt="Seaside cliff overlooking clear blue waters in Lebanon.">
+            <div class="absolute bottom-5 left-5 rounded-xl bg-[#fffdfa]/90 px-4 py-3 text-sm font-semibold text-[#176b48] shadow-lg">
+              Mediterranean spirit · mountain landscapes · living heritage
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOPIC DIRECTORY -->
+      <section id="topics" class="bg-[#fffdfa] py-16 md:py-20">
+        <div class="mx-auto max-w-7xl px-5 md:px-8">
+          <div class="mb-9 max-w-2xl">
+            <p class="text-sm font-bold uppercase tracking-[.16em] text-[#176b48]">Start exploring</p>
+            <h2 class="display-font mt-2 text-2xl font-bold text-[#252525]">Topic directory</h2>
+            <p class="mt-3 leading-7 text-[#514a45]">Choose any topic below to jump straight to its introduction and presentation video.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="#topic-1" class="topic-card"><span class="card-num">01</span><span class="font-bold text-[#252525]">Asian Country Lebanon</span></a>
+            <a href="#topic-2" class="topic-card"><span class="card-num">02</span><span class="font-bold text-[#252525]">Population Lebanon</span></a>
+            <a href="#topic-3" class="topic-card"><span class="card-num">03</span><span class="font-bold text-[#252525]">Languages &amp; Dialects Lebanon</span></a>
+            <a href="#topic-4" class="topic-card"><span class="card-num">04</span><span class="font-bold text-[#252525]">Festivals Lebanon</span></a>
+            <a href="#topic-5" class="topic-card"><span class="card-num">05</span><span class="font-bold text-[#252525]">Entertainment Lebanon</span></a>
+            <a href="#topic-6" class="topic-card"><span class="card-num">06</span><span class="font-bold text-[#252525]">Midterm Personality Lebanon</span></a>
+            <a href="#topic-7" class="topic-card"><span class="card-num">07</span><span class="font-bold text-[#252525]">Traditional Sports Lebanon</span></a>
+            <a href="#topic-8" class="topic-card"><span class="card-num">08</span><span class="font-bold text-[#252525]">Social Communication Lebanon</span></a>
+            <a href="#topic-9" class="topic-card"><span class="card-num">09</span><span class="font-bold text-[#252525]">Environment Lebanon</span></a>
+            <a href="#topic-10" class="topic-card"><span class="card-num">10</span><span class="font-bold text-[#252525]">Final Leadership Lebanon</span></a>
+            <a href="#topic-11" class="topic-card"><span class="card-num">11</span><span class="font-bold text-[#252525]">Self-Study 1: Beauty Lebanon</span></a>
+            <a href="#topic-12" class="topic-card"><span class="card-num">12</span><span class="font-bold text-[#252525]">Self-Study 2: Health Lebanon</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- COUNTRY SECTIONS -->
+      <section id="country" class="bg-[#f5efe5]">
+        <!-- Topic 1 -->
+        <div id="topic-1" class="topic-section">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 01</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Asian Country Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Lebanon is a country on the eastern Mediterranean coast, known for a landscape where sea, mountains, towns, and ancient sites sit close together.</p>
+              <a href="https://www.youtube.com/watch?v=E1ruLK4ClaM" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/E1ruLK4ClaM?playsinline=1&amp;rel=0" title="Asian Country Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 2 -->
+        <div id="topic-2" class="topic-section bg-[#fffdfa]">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 02</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Population Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Lebanon’s communities include people with varied family histories, religious traditions, and regional connections. City neighborhoods and villages both shape daily life.</p>
+              <a href="https://www.youtube.com/watch?v=j4v_dbqoXYU" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/j4v_dbqoXYU?playsinline=1&amp;rel=0" title="Population Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PEOPLE SECTIONS -->
+      <section id="people" class="bg-[#f5efe5]">
+        <!-- Topic 3 -->
+        <div id="topic-3" class="topic-section">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 03</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Languages &amp; Dialects Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Arabic is central to public and everyday communication in Lebanon, while French and English are also commonly encountered in education, media, and business.</p>
+              <a href="https://www.youtube.com/watch?v=8zAjB_1fI9k" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/8zAjB_1fI9k?playsinline=1&amp;rel=0" title="Languages &amp; Dialects Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 4 -->
+        <div id="topic-4" class="topic-section bg-[#fffdfa]">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 04</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Festivals Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Festivals in Lebanon can bring together music, food, religious observance, arts, and local traditions. They create opportunities for communities to share cultural expression.</p>
+              <a href="https://www.youtube.com/watch?v=pE66zK6kNbI" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/pE66zK6kNbI?playsinline=1&amp;rel=0" title="Festivals Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CULTURE SECTIONS -->
+      <section id="culture" class="bg-[#fffdfa]">
+        <!-- Topic 5 -->
+        <div id="topic-5" class="topic-section">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 05</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Entertainment Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Music, performance, film, cafés, and family gatherings are part of Lebanon’s lively entertainment culture, with both traditional and contemporary creative influences.</p>
+              <a href="https://www.youtube.com/watch?v=WwQl1RrVFT0" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/WwQl1RrVFT0?playsinline=1&amp;rel=0" title="Entertainment Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 6 -->
+        <div id="topic-6" class="topic-section bg-[#f5efe5]">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 06</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Midterm Personality Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">This topic considers the personal and community qualities that can be explored through Lebanese social life, including hospitality, resilience, conversation, and family connection.</p>
+              <a href="https://www.youtube.com/watch?v=8d8HMGA5GwU" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/8d8HMGA5GwU?playsinline=1&amp;rel=0" title="Midterm Personality Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 7 -->
+        <div id="topic-7" class="topic-section bg-[#fffdfa]">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 07</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Traditional Sports Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Sport and outdoor activity are enjoyed in many settings across Lebanon. Community games, football, hiking, swimming, and mountain activities connect recreation with place.</p>
+              <a href="https://www.youtube.com/watch?v=mipI_ApKP2g" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/mipI_ApKP2g?playsinline=1&amp;rel=0" title="Traditional Sports Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIFESTYLE & ENVIRONMENT SECTIONS -->
+      <section id="lifestyle" class="bg-[#f5efe5]">
+        <!-- Topic 8 -->
+        <div id="topic-8" class="topic-section">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 08</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Social Communication Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Conversation and hospitality are important parts of social communication. Shared meals, visits, cafés, and thoughtful greetings offer ways people build and maintain relationships.</p>
+              <a href="https://www.youtube.com/watch?v=_PSi2TZqJK8" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/_PSi2TZqJK8?playsinline=1&amp;rel=0" title="Social Communication Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 9 -->
+        <div id="topic-9" class="topic-section bg-[#fffdfa]">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 09</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Environment Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Lebanon features distinct geography, from coastal plains to cedar forests and snow-capped mountain ranges, defining its natural heritage and ecological focus.</p>
+              <a href="https://www.youtube.com/watch?v=E1ruLK4ClaM" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/E1ruLK4ClaM?playsinline=1&amp;rel=0" title="Environment Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 10 -->
+        <div id="topic-10" class="topic-section">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 10</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Final Leadership Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Exploring community leadership, civic initiatives, and historical leadership styles that shape governance and modern civil society in Lebanon.</p>
+              <a href="https://www.youtube.com/watch?v=j4v_dbqoXYU" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/j4v_dbqoXYU?playsinline=1&amp;rel=0" title="Final Leadership Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 11 -->
+        <div id="topic-11" class="topic-section bg-[#fffdfa]">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 11</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Self-Study 1: Beauty Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">A study of aesthetics, regional fashion, design, and classical expressions of natural and architecture-inspired beauty in Lebanon.</p>
+              <a href="https://www.youtube.com/watch?v=8zAjB_1fI9k" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/8zAjB_1fI9k?playsinline=1&amp;rel=0" title="Self-Study 1: Beauty Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic 12 -->
+        <div id="topic-12" class="topic-section">
+          <div class="topic-inner mx-auto grid max-w-7xl items-center gap-9 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2">
+            <div class="topic-copy">
+              <p class="mb-3 text-sm font-bold tracking-[.15em] text-[#176b48]">TOPIC 12</p>
+              <h2 class="display-font text-2xl font-bold text-[#252525]">Self-Study 2: Health Lebanon</h2>
+              <p class="mt-5 max-w-xl text-base leading-8 text-[#514a45]">Healthy living can be explored through fresh ingredients, balanced Mediterranean diets, movement, rest, and the social value of sharing food with family and friends.</p>
+              <a href="https://www.youtube.com/watch?v=roFVhIrh8b8" target="_blank" rel="noopener noreferrer" class="watch-button mt-7 inline-flex items-center gap-2 rounded-full bg-[#9e1b32] px-5 py-3 font-bold text-white">Watch on YouTube</a>
+              <a href="#topics" class="mt-6 block text-sm font-bold text-[#176b48] underline underline-offset-4">Back to topics</a>
+            </div>
+            <div class="topic-player-wrap">
+              <div class="player-frame">
+                <iframe src="https://www.youtube-nocookie.com/embed/roFVhIrh8b8?playsinline=1&amp;rel=0" title="Self-Study 2: Health Lebanon video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-stone-200 bg-[#252525] py-8 text-center text-sm text-stone-400">
+      <div class="mx-auto max-w-7xl px-5">
+        <p>&copy; 2026 Discover Lebanon Student Project. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    const menuBtn = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
